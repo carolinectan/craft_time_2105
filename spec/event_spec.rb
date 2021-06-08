@@ -31,7 +31,7 @@ RSpec.describe Event do
     expect(event.attendee_names).to eq(["Hector", "Toni"])
   end
 
-  xit 'can return craft with most supplies' do
+  it 'can return craft with most supplies' do
     hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
     toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
 

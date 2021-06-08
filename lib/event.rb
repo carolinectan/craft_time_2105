@@ -14,16 +14,10 @@ class Event
   end
 
   def craft_with_most_supplies
-    hash = @crafts.group_by do |craft|
-      craft.supplies_required
+    result = @crafts.max_by do |craft|
+      craft.supplies_required.length
     end
-
-    max_supplies_amount = hash.keys.map do |hash|
-      hash.values.sum
-    end.max
-    @crafts.select do |craft|
-      return craft.name if max_supplies_amount == craft.supplies_required.values.sum
-    end
+    result.name
   end
 
   def supply_list
