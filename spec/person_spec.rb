@@ -24,4 +24,5 @@ RSpec.describe Person do
     @person.add_supply('fabric', 3)
 
     expect(@person.supplies).to eq({"fabric"=>7, "scissors"=>1})
+  end
 end
