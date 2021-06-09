@@ -31,4 +31,22 @@ class Event
       end
     end.uniq
   end
+
+  def attendees_by_craft_interest
+    hash = Hash.new
+
+    @crafts.each do |craft|
+      hash[craft.name] = @attendees.select do |person|
+        person.interests.include?(craft.name)
+      end
+    end
+
+    hash
+  end #=>   "craft name"=>[person obj, person obj],
+
+  def crafts_that_use(supply)
+    @crafts.select do |craft|
+        craft.supplies_required.keys.include?(supply.to_sym)
+    end
+  end
 end

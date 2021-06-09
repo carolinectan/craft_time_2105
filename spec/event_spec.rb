@@ -61,7 +61,7 @@ RSpec.describe Event do
       @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
       @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1})
       @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
-      @event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, tony])
+      @event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @tony])
 
       expected = {
                     "knitting"=>[@toni, @tony],
@@ -78,7 +78,7 @@ RSpec.describe Event do
       @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
       @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1})
       @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
-      @event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, tony])
+      @event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @tony])
 
       expect(@event.crafts_that_use('scissors')).to eq([@knitting, @sewing])
       expect(@event.crafts_that_use('fire')).to eq([])
