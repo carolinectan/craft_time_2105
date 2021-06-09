@@ -11,19 +11,9 @@ class Person
     @supplies[supply] += quantity
   end
 
-  def can_build?(type)
-    supplies = type.supplies_required.keys.map do |sup|
-      sup.to_s
-    end
-
-    result = supplies.map do |supply|
-      @interests.include?(supply)
-    end
-# require "pry"; binding.pry
-    if @interests.any?(supplies)
-      true
-    else
-      false
+  def can_build?(craft)
+    craft.supplies_required.all? do |craft, amount|
+      @supplies[craft.to_s] >= amount
     end
   end
 end
